@@ -1,0 +1,10 @@
+{
+  "name": "Inteligent-Bee-project",
+  "description": "twitter test app",
+  "main": "index.js",
+  "authors": [
+    "Ovidiu Grigoras"
+  ],
+  "license": "ISC",
+  "homepage": ""
+}
