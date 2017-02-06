@@ -1,13 +1,18 @@
 body {
   background-color: #f4f8fb;
+  font-family: 'Open Sans', sans-serif;
+  color: #737a81;
 }
+
 header {
   display: flex;
   justify-content: center;
   margin-top: 60px;
 }
+
 .search-section {
   margin-top: 60px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
   input {
@@ -18,6 +23,7 @@ header {
     border-top-left-radius: 0.5rem;
     font-size: 18px;
     padding-left: 20px;
+    font-family: 'Open Sans', sans-serif;
   }
   button {
     background-color: #4abce6;
@@ -27,19 +33,83 @@ header {
     color: #fff;
     width: 8rem;
     font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
   }
 }
+
 .content-section {
-  margin-top: 40px;
-  .wrap-response {
-    width: 36rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  margin-top: 20px;
+  .wrapper {
+    width: 540px;
     margin: 0 auto;
+    padding: 20px;
     background-color: #fff;
     border-radius: 0.5rem;
     border: 1px solid #e4ebf1;
   }
+  .wrap-response {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .block-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .user-detail {
+    display: flex;
+    img {
+      border-radius: 0.5rem;
+    }
+    .detail-wrap {
+      padding-left: 10px;
+    }
+    .title-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #292f33;
+    }
+    .title-who {
+      font-size: 12px;
+    }
+
+  }
+  .block-body {
+    .description {
+      padding: 20px 0 20px;
+    }
+    img {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid #e4ebf1;
+    }
+  }
+  .social-icons {
+    padding-top: 20px;
+    .fa-reply:hover {
+      color: #1da1f2;
+      cursor: pointer;
+    }
+    .fa-retweet:hover {
+      cursor: pointer;
+      color: #19cf86;
+    }
+    .fa-heart:hover {
+      color: #e2264d;
+      cursor: pointer;
+    }
+  }
+  .social-icons i:not(:first-child) {
+    padding-left: 20px;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+}
+
+.toggleChevron i {
+  transform: rotate(180deg);
+}
+.hide-div {
+  display: none;
 }

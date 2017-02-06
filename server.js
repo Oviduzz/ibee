@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var app = express();
 var bodyParser = require("body-parser");
 
 var Twitter = require('twitter');
@@ -12,30 +13,31 @@ var client = new Twitter({
     access_token_secret: 'U0uHnmb416CRnGTYSZcRKQTkCpR2TZLj5lMz9jnTISK8g'
 });
 
-var params = {screen_name: 'twitterapi'};
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 
-var app = express();
-
-// create application/json parser
-var jsonParser = bodyParser.json();
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static(path.resolve(__dirname,'app')));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
+// parse application/json
+app.use(bodyParser.json());
 
 app.get('/', function(req, res){
+
     res.sendFile(path.resolve(__dirname,'app/index.html'));
 });
 
-app.post('/api/tweets', urlencodedParser, function(req, res){
-    console.log(req);
+app.post('/api/tweets', function(req, res){
+
     if (!req.body) return res.sendStatus(400);
 
-    client.get('statuses/user_timeline',{screen_name: req.body.screen_name}, function(error, tweets, response) {
+    client.get('statuses/user_timeline',{screen_name: req.body.screen_name, count: 5}, function(error, tweets, response) {
+
         if (!error) {
             //console.log(tweets);
             res.send( { tweets: tweets });
@@ -43,6 +45,9 @@ app.post('/api/tweets', urlencodedParser, function(req, res){
     });
 
 });
+
+
+
 
 
 

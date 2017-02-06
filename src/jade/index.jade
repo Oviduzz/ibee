@@ -3,10 +3,13 @@ html
     head
         title Project boilerplate
         meta(charset='utf-8')
-        meta(name="description" content="This is a simple project boilerplate, using Grunt as task automation")
-        meta(name="keywords" content="Jade, Sass, Grunt")
+        meta(name="description" content="Project Ibee")
+        meta(name="keywords" content="twitter app")
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='shortcut icon', type='/image/x-icon', href='favicon.ico')
+        link(rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet" href="/fonts/fonts.css")
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet")
         link(rel='stylesheet', href='/css/main.css')
     body
         header
@@ -15,26 +18,7 @@ html
             input(type="text" placeholder="Enter a twitter account" id="input-search")
             button#button-search
                 | Search
-        .content-section
-            .wrap-response
-                .block-header
-                    .logo
-                        img(src="/img/logo.png" alt="logo")
-                    .title
-                        .title-name
-                            | Invision
-                        .title-who
-                            | @invision 2h
-                    .collapse
-                            | ^
-                .block-body
-                    .description “If we don’t start giving new designers a chance, the design
-                        | industry will crumble.” bit.ly/1LHhCfr  @jma245
-                    .image
-                        img(src="/img/logo.png")
-                .block-footer
-                    .social-icons
-                        | 1 2 3
-
+        #response-container
+        script(src="https://use.fontawesome.com/edc2d42e10.js")
         script(src="/js/main.min.js")
     footer
