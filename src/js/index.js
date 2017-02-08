@@ -72,71 +72,8 @@ document.getElementById('button-search').addEventListener("click", function () {
 
                     });
                 }
-
-                /// Retweet request
-                document.querySelectorAll(".fa-retweet").forEach(function(retweetBtn){
-                    retweetBtn.addEventListener("click", function(event){
-                        var paramRetweet = {id: event.target.getAttribute('data-retweet')};
-                        var paramRetweeted = JSON.stringify(paramRetweet);
-                        var retweetUrl = '/api/retweets/';
-                        this.classList.toggle('tweet-active');
-                        
-                        function postData(paramRetweeted) {
-                            var xhttp = new XMLHttpRequest();
-                            xhttp.open("POST", retweetUrl, true);
-                            xhttp.setRequestHeader("Content-Type", "application/json");
-                            xhttp.setRequestHeader("Accept", "application/json");
-                            xhttp.onreadystatechange = function () {
-                                if (this.readyState == 4 && this.status == 200) {
-                                    var reqResponse = JSON.parse(this.response);
-
-                                }
-                            };
-
-                            xhttp.send(paramRetweeted);
-                        }
-                        postData(paramRetweeted);
-                    })
-                });
-
-
-                /// Favorite request
-                document.querySelectorAll(".fa-heart").forEach(function(favBtn){
-                    favBtn.addEventListener("click", function(event){
-                        var paramFav = {id: event.target.getAttribute('data-heart')};
-                        var paramFaved = JSON.stringify(paramFav);
-                        var favUrl = '/api/favorites/';
-                        this.classList.toggle('heart-active');
-
-                        function postData(paramFaved) {
-                            var xhttp = new XMLHttpRequest();
-                            xhttp.open("POST", favUrl, true);
-                            xhttp.setRequestHeader("Content-Type", "application/json");
-                            xhttp.setRequestHeader("Accept", "application/json");
-                            xhttp.onreadystatechange = function () {
-                                if (this.readyState == 4 && this.status == 200) {
-                                    var reqResponse = JSON.parse(this.response);
-
-                                }
-                            };
-
-                            xhttp.send(paramFaved);
-                        }
-                        postData(paramFaved);
-                    })
-                });
-
-
-                //hide tweet body
-                document.querySelectorAll(".collapse").forEach(function (btn) {
-                    btn.addEventListener("click", function (event) {
-                        this.classList.toggle('toggleChevron');
-                        document.querySelector("#"+event.target.getAttribute("data-target")).classList.toggle("hide-div");
-                        document.querySelector("#"+event.target.getAttribute("data-text")).classList.toggle("truncate");
-
-                    })
-                });
-
+                // request function for events
+                addEventListeners();
             }
         };
 
@@ -144,5 +81,71 @@ document.getElementById('button-search').addEventListener("click", function () {
     }
 
     loadTweetData(paramJson);
+
+    function addEventListeners(){
+        /// Retweet request
+        document.querySelectorAll(".fa-retweet").forEach(function(retweetBtn){
+            retweetBtn.addEventListener("click", function(event){
+                var paramRetweet = {id: event.target.getAttribute('data-retweet')};
+                var paramRetweeted = JSON.stringify(paramRetweet);
+                var retweetUrl = '/api/retweets/';
+                this.classList.toggle('tweet-active');
+
+                function postData(paramRetweeted) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", retweetUrl, true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.setRequestHeader("Accept", "application/json");
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var reqResponse = JSON.parse(this.response);
+
+                        }
+                    };
+
+                    xhttp.send(paramRetweeted);
+                }
+                postData(paramRetweeted);
+            })
+        });
+
+        /// Favorite request
+        document.querySelectorAll(".fa-heart").forEach(function(favBtn){
+            favBtn.addEventListener("click", function(event){
+                var paramFav = {id: event.target.getAttribute('data-heart')};
+                var paramFaved = JSON.stringify(paramFav);
+                var favUrl = '/api/favorites/';
+                this.classList.toggle('heart-active');
+
+                function postData(paramFaved) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", favUrl, true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.setRequestHeader("Accept", "application/json");
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var reqResponse = JSON.parse(this.response);
+
+                        }
+                    };
+
+                    xhttp.send(paramFaved);
+                }
+                postData(paramFaved);
+            })
+        });
+
+        //hide tweet body
+        document.querySelectorAll(".collapse").forEach(function (btn) {
+            btn.addEventListener("click", function (event) {
+                this.classList.toggle('toggleChevron');
+                document.querySelector("#"+event.target.getAttribute("data-target")).classList.toggle("hide-div");
+                document.querySelector("#"+event.target.getAttribute("data-text")).classList.toggle("truncate");
+
+            })
+        });
+
+
+    }
 });
 
