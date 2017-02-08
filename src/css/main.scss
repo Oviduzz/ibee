@@ -24,6 +24,7 @@ header {
     font-size: 18px;
     padding-left: 20px;
     font-family: 'Open Sans', sans-serif;
+    color: #737a81;
   }
   button {
     background-color: #4abce6;
@@ -37,6 +38,9 @@ header {
   }
 }
 
+#response-container {
+  margin-bottom: 50px;
+}
 .content-section {
   margin-top: 20px;
   .wrapper {
@@ -52,6 +56,9 @@ header {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    .description {
+      padding: 20px 0 20px;
+    }
   }
   .block-header {
     display: flex;
@@ -76,9 +83,6 @@ header {
 
   }
   .block-body {
-    .description {
-      padding: 20px 0 20px;
-    }
     img {
       width: 100%;
       border-radius: 0.5rem;
@@ -106,10 +110,36 @@ header {
     cursor: pointer;
   }
 }
-
+//toggle classes
 .toggleChevron i {
   transform: rotate(180deg);
 }
 .hide-div {
   display: none;
+}
+.tweet-active{
+    color: #19cf86;
+}
+.heart-active {
+    color: #e2264d;
+}
+.truncate {
+  width: 540px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#no-data {
+  display:none;
+}
+.display-data {
+  display: flex!important;
+  justify-content: center;
+  position: relative;
+  right: 220px;
+  bottom: 50px;
+  color: #f55252;
+  h4 {
+    font-weight:400;
+  }
 }

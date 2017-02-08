@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 
 var Twitter = require('twitter');
 
-
+// twitter dev app keys
 var client = new Twitter({
     consumer_key: 'SslhXz9ojX6cwFlDbwkdWOCF1',
     consumer_secret: 'VGUqb9F4MgE8xZFB7yAEFlT10kKDcATxndKV39FIauMPnZpOQk',
@@ -14,8 +14,6 @@ var client = new Twitter({
 });
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-
 
 
 app.use(express.static(path.resolve(__dirname,'app')));
@@ -32,23 +30,42 @@ app.get('/', function(req, res){
     res.sendFile(path.resolve(__dirname,'app/index.html'));
 });
 
+
 app.post('/api/tweets', function(req, res){
-
     if (!req.body) return res.sendStatus(400);
-
+    
     client.get('statuses/user_timeline',{screen_name: req.body.screen_name, count: 5}, function(error, tweets, response) {
-
         if (!error) {
-            //console.log(tweets);
             res.send( { tweets: tweets });
         }
+
     });
+    
 
 });
+app.post('/api/retweets/', function(req, res){
+    var tweetId = req.body.id;
+    if (!req.body) return res.sendStatus(400);
+    
+    client.post('statuses/retweet/' + tweetId +'.json', function(error, retweets, response) {
+        console.log(retweets);
+        if (!error) {
+            res.send( { retweets: retweets });
+        }
 
+    });
+});
 
+app.post('/api/favorites/', function(req, res){
+    if (!req.body) return res.sendStatus(400);
+    
+    client.post('favorites/create', {id: req.body.id}, function(error, favs, response) {
+        if (!error) {
+            res.send( { favorites: favs });
+        }
 
-
+    });
+});
 
 
 var port = 3030;

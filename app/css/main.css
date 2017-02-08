@@ -21,7 +21,8 @@ header {
     border-top-left-radius: 0.5rem;
     font-size: 18px;
     padding-left: 20px;
-    font-family: 'Open Sans', sans-serif; }
+    font-family: 'Open Sans', sans-serif;
+    color: #737a81; }
   .search-section button {
     background-color: #4abce6;
     border-top-right-radius: 0.5rem;
@@ -31,6 +32,9 @@ header {
     width: 8rem;
     font-size: 18px;
     font-family: 'Open Sans', sans-serif; }
+
+#response-container {
+  margin-bottom: 50px; }
 
 .content-section {
   margin-top: 20px; }
@@ -46,6 +50,8 @@ header {
     display: flex;
     justify-content: center;
     flex-direction: column; }
+    .content-section .wrap-response .description {
+      padding: 20px 0 20px; }
   .content-section .block-header {
     display: flex;
     justify-content: space-between; }
@@ -61,8 +67,6 @@ header {
       color: #292f33; }
     .content-section .user-detail .title-who {
       font-size: 12px; }
-  .content-section .block-body .description {
-    padding: 20px 0 20px; }
   .content-section .block-body img {
     width: 100%;
     border-radius: 0.5rem;
@@ -88,5 +92,30 @@ header {
 
 .hide-div {
   display: none; }
+
+.tweet-active {
+  color: #19cf86; }
+
+.heart-active {
+  color: #e2264d; }
+
+.truncate {
+  width: 540px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+#no-data {
+  display: none; }
+
+.display-data {
+  display: flex !important;
+  justify-content: center;
+  position: relative;
+  right: 220px;
+  bottom: 50px;
+  color: #f55252; }
+  .display-data h4 {
+    font-weight: 400; }
 
 /*# sourceMappingURL=main.css.map */
