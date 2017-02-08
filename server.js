@@ -48,7 +48,6 @@ app.post('/api/retweets/', function(req, res){
     if (!req.body) return res.sendStatus(400);
     
     client.post('statuses/retweet/' + tweetId +'.json', function(error, retweets, response) {
-        console.log(retweets);
         if (!error) {
             res.send( { retweets: retweets });
         }
